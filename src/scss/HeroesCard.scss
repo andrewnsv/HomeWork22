@@ -1,0 +1,38 @@
+.card-item {
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  border-radius: 15px;
+  background: #333;
+  border: 1px solid #333;
+  padding: 10px;
+  transition: background-color 0.7s ease;
+  img {
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .card-inf {
+    border: 1px solid #000;
+    width: 100%;
+    margin: 10px 0px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    color: #333;
+    padding: 3px;
+    font-size: 23px;
+    text-align: center;
+    transition: background-color 0.7s ease, color 0.7s ease;
+  }
+}
+
+.card-item.dark {
+  background-color: #f7f7f7;
+}
+
+.card-item.dark .card-inf {
+  color: #f7f7f7;
+  background: #333;
+}
