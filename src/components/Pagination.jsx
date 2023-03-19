@@ -121,6 +121,7 @@ class PaginationClass extends React.Component {
 //   );
 // }
 
+
 // export default Pagination;
 
 export default PaginationClass;
