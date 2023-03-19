@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   border-radius: 15px;
   background: #333;
   border: 1px solid #333;
@@ -25,6 +26,9 @@
     font-size: 23px;
     text-align: center;
     transition: background-color 0.7s ease, color 0.7s ease;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 

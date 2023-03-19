@@ -12,14 +12,13 @@ class PaginationClass extends React.Component {
     super(props);
 
     this.nextHandler = () => {
-      const next = this.context.heroList?.info?.next;
+      const next = this.context.heroList.info?.next;
       this.context.fetchHeroes(next);
       this.context.handlePageChange(this.context.activePage + 1);
     };
 
     this.prevHandler = () => {
-      const prev = this.context.heroList?.info?.prev;
-      console.log(prev)
+      const prev = this.context.heroList.info?.prev;
       this.context.fetchHeroes(prev);
       this.context.handlePageChange(this.context.activePage - 1);
     };
@@ -35,12 +34,14 @@ class PaginationClass extends React.Component {
 
   render() {
     const theme = this.props.theme.theme;
+    const next = this.context.heroList?.info?.next;
+    const prev = this.context.heroList?.info?.prev;
 
     return (
       <div className="pagination">
         <PaginationButton
           theme={theme}
-          prev={this.prev}
+          prev={prev}
           onClick={this.prevHandler}
           label="Prev"
           className={''}
@@ -56,7 +57,7 @@ class PaginationClass extends React.Component {
         ))}
         <PaginationButton
           theme={theme}
-          prev={this.next}
+          prev={next}
           onClick={this.nextHandler}
           label="Next"
           className={''}
@@ -72,14 +73,15 @@ class PaginationClass extends React.Component {
 //   const heroesCtx = useContext(HttpHeroesContext);
 //   const themeCtx = useContext(ThemeContext);
 
+//   const next = heroesCtx.heroList.info?.next;
+//   const prev = heroesCtx.heroList.info?.prev;
+
 //   const nextHandler = () => {
-//     const next = heroesCtx.heroList.info?.next;
 //     heroesCtx.fetchHeroes(next);
 //     heroesCtx.handlePageChange(heroesCtx.activePage + 1);
 //   };
 
 //   const prevHandler = () => {
-//     const prev = heroesCtx.heroList.info?.prev;
 //     heroesCtx.fetchHeroes(prev);
 //     heroesCtx.handlePageChange(heroesCtx.activePage - 1);
 //   };
