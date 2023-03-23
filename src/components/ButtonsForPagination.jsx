@@ -7,7 +7,7 @@ function PaginationButton({ theme, prev, onClick, label, className }) {
   return (
     <button
       className={`pagination-btn ${theme ? "" : "dark-btn dark-num"} ${className}`}
-      disabled={prev === null}
+      disabled={!!prev}
       onClick={onClick}
     >
       {label}
