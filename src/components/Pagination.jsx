@@ -11,20 +11,15 @@ class PaginationClass extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getConstants = () => {
-      const theme = this.props.theme.theme;
-      const next = this.context.heroList?.info?.next;
-      const prev = this.context.heroList?.info?.prev;
-      return { theme, next, prev }
-    }
-
     this.nextHandler = () => {
-      this.context.fetchHeroes(this.getConstants(this.next));
+      const next = this.context.heroList?.info?.next;
+      this.context.fetchHeroes(next);
       this.context.handlePageChange(this.context.activePage + 1);
     };
 
     this.prevHandler = () => {
-      this.context.fetchHeroes(this.context.fetchHeroes(this.getConstants(this.prev)));
+      const prev = this.context.heroList?.info?.prev;
+      this.context.fetchHeroes(prev);
       this.context.handlePageChange(this.context.activePage - 1);
     };
 
@@ -38,17 +33,21 @@ class PaginationClass extends React.Component {
   }
 
   render() {
+    const theme = this.props.theme.theme;
+    const next = this.context.heroList?.info?.next;
+    const prev = this.context.heroList?.info?.prev;
+
     return (
       <div className="pagination">
         <PaginationButton
-          theme={this.getConstants(this.theme)}
-          prev={this.getConstants(this.next)}
+          theme={theme}
+          prev={prev}
           onClick={this.prevHandler}
           label="Prev"
         />
         {this.getAllPages().map((item) => (
           <div
-            className={`page-num ${item === this.context.activePage ? !this.getConstants(this.theme) ? "dark-active " : "active" : ""}`}
+            className={`page-num ${item === this.context.activePage ? !theme ? "dark-active " : "active" : ""}`}
             onClick={() => {this.context.handlePageChange(item)}}
             key={item}
           >
@@ -56,8 +55,8 @@ class PaginationClass extends React.Component {
           </div>
         ))}
         <PaginationButton
-          theme={this.getConstants(this.theme)}
-          prev={this.getConstants(this.prev)}
+          theme={theme}
+          prev={next}
           onClick={this.nextHandler}
           label="Next"
         />
