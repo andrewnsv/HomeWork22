@@ -5,7 +5,6 @@ export const HttpHeroesContext = createContext();
 function HttpHeroesProvider({children}) {
   const [heroList, setHeroList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [activePage, setActivePage] = useState(1);
 
   useEffect(() => {fetchHeroes(`https://rickandmortyapi.com/api/character/?page=${currentPage}`)}, [currentPage]);
 
@@ -18,11 +17,10 @@ function HttpHeroesProvider({children}) {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setActivePage(pageNumber)
   }
   
   const getHeroesCtx = () => ({
-    activePage,
+    currentPage,
     heroList,
     fetchHeroes,
     handlePageChange

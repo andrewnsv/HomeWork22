@@ -14,13 +14,13 @@ class PaginationClass extends React.Component {
     this.nextHandler = () => {
       const next = this.context.heroList?.info?.next;
       this.context.fetchHeroes(next);
-      this.context.handlePageChange(this.context.activePage + 1);
+      this.context.handlePageChange(this.context.currentPage + 1);
     };
 
     this.prevHandler = () => {
       const prev = this.context.heroList?.info?.prev;
       this.context.fetchHeroes(prev);
-      this.context.handlePageChange(this.context.activePage - 1);
+      this.context.handlePageChange(this.context.currentPage - 1);
     };
 
     this.getAllPages = () => {
@@ -47,7 +47,7 @@ class PaginationClass extends React.Component {
         />
         {this.getAllPages().map((item) => (
           <div
-            className={`page-num ${item === this.context.activePage ? !theme ? "dark-active " : "active" : ""}`}
+            className={`page-num ${item === this.context.currentPage ? !theme ? "dark-active " : "active" : ""}`}
             onClick={() => {this.context.handlePageChange(item)}}
             key={item}
           >
